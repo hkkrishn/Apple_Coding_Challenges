@@ -5,8 +5,8 @@ const express = require('express') // Initializes express middleware for us
 const mongoose = require('mongoose'); //initialize mongoose to connect to MongoDB
 const bodyParser = require('body-parser'); //Bring int he body parser middleware
 
-//Load in the URL Model
-const URL = require('./models/Urls');
+// //Load in the URL Model
+// const URL = require('./models/Urls');
 
 
 const app = express(); //Initialize the app
@@ -26,12 +26,18 @@ mongoose.connect(db)
     .catch(err => console.log(`There was an Error: ${err}`))
 
 
+//Route Management
+const shorten = require('./routes/api/shorten');
+//if the user makes a request
+app.use('/api/shorten', shorten)
 
 //the path that we want to listen to
 //GET request
 app.get('/', (req, res) => {
     res.send('Apple Coding Challenge')
 })
+
+
 
 //Since this project might me deployed live it can either use the process.env port or port 9000
 const port = process.env.PORT || 9000
