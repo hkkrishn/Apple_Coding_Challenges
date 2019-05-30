@@ -36,7 +36,15 @@ app.use('/api/redirect', redirect);
 
 app.get('/:hash', (req, res) => {
     const id = req.params.hash;
-    console.log(id)
+    URL.findOne({ _id: id }, (err, doc) => {
+            if (doc) {
+                console.log(doc.url) // the id after the / is a hash to a webadress
+                res.redirect('http://' + doc.url) // redirects the user to the webadress by adding the http protocol
+            } else {
+                console.log(`This url does not exist `) // the webadress was not hashed yet
+            }
+        }) //id refers to the hash we are sending in
+
 })
 
 //the path that we want to listen to
