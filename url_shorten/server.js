@@ -39,7 +39,7 @@ app.get('/:hash', (req, res) => {
     URL.findOne({ _id: id }, (err, doc) => {
             if (doc) {
                 console.log(doc.url) // the id after the / is a hash to a webadress
-                res.redirect('http://' + doc.url) // redirects the user to the webadress by adding the http protocol
+                res.redirect(doc.url) // redirects the user to the webadress by adding the http protocol
             } else {
                 console.log(`This url does not exist `) // the webadress was not hashed yet
             }

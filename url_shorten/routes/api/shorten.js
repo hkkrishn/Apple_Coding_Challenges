@@ -4,6 +4,14 @@ const unique = require('uniqid');
 
 //Load our URL Models/Schema
 const URL = require('../../models/Urls');
+
+//Enable Cross Origin
+router.use((req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
+    next();
+})
+
 //Testing the API endpoint
 router.get('/test', (req, res) => res.json({ msg: 'API IS WORKING' }))
 
