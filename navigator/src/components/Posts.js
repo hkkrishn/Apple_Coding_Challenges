@@ -34,7 +34,7 @@ class Posts extends Component {
             <div className = "container center">
                 {PostData.cities.map((city,index)=>{
                     if(index === 0){
-                        return <div key ={index} className = "nav_item_one" onClick = {this.handleClick} ref={this.first}>
+                        return <div key ={index} className = "nav_item_one" ref={this.first} onClick ={this.handleClick}>
                             <a href="/">{city.label}</a>
                         </div>
                     } else{
@@ -43,9 +43,6 @@ class Posts extends Component {
                         </div>
                     }
                 })}
-                <div className = "slidecontainer">
-                    <input type="range" min="1" max="100" value="50" className="slider" id="myRange"/>
-                </div>
             </div>
         )}
 }
